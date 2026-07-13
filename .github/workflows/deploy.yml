@@ -33,6 +33,16 @@ jobs:
           ssh-keyscan ${{ secrets.EC2_HOST }} >> ~/.ssh/known_hosts
 
       # Copy website
-      - name: Deploy Website
-        run: |
-          rsync -avz --delete dist/ ubuntu@${{ secrets.EC2_HOST }}:/var/www/html/
+      - name: Upload website
+  		run: |
+    	  rsync -avz --delete \
+      	  -e "ssh -i ~/.ssh/github_actions-" \
+      	  dist/ \
+      	  ubuntu@${{ secrets.EC2_HOST }}:/home/ubuntu/dist/
+
+	  -name: Install website
+	  	run: |
+	  	  ssh -i ~.ssh/github_actions- ubuntu@{{ secrets.EC2_HOST }} << 'EOF'
+	  	    sudo rm -rf /var/www/html/*
+	  	    sudo cp -r /home/ubuntu/dist/* /var/www/html
+	  	  EOF
