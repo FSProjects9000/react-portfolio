@@ -1,0 +1,150 @@
+.page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg);
+  overflow-x: hidden;
+}
+
+/* ---------- Hero ---------- */
+
+.hero {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 28px;
+  padding: 96px 24px 64px;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+.hero__portrait-wrap {
+  width: 168px;
+  height: 168px;
+  border-radius: 50%;
+  padding: 4px;
+  background: conic-gradient(from 210deg, var(--teal), var(--navy) 55%, var(--teal) 100%);
+  box-shadow: 0 18px 40px -20px rgba(27, 42, 74, 0.45);
+}
+
+.hero__portrait {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid var(--bg);
+  background: var(--bg);
+}
+
+.hero__headline {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(2.2rem, 5vw, 3.4rem);
+  line-height: 1.12;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+}
+
+.hero__headline-line {
+  display: block;
+  color: var(--navy);
+}
+
+/* ---------- Deploy badge ---------- */
+
+.deploy-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  max-width: 640px;
+  padding: 12px 20px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: #fafbfc;
+  box-shadow: 0 1px 2px rgba(18, 21, 26, 0.03);
+}
+
+.deploy-badge__dot {
+  flex-shrink: 0;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--teal);
+  box-shadow: 0 0 0 0 rgba(47, 182, 168, 0.6);
+  animation: pulse 2.4s ease-in-out infinite;
+}
+
+.deploy-badge__text {
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.deploy-badge__cursor {
+  display: inline-block;
+  width: 7px;
+  height: 1em;
+  margin-left: 2px;
+  vertical-align: -2px;
+  background: var(--navy);
+  animation: blink 1.1s steps(1) infinite;
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(47, 182, 168, 0.55);
+  }
+  70% {
+    box-shadow: 0 0 0 8px rgba(47, 182, 168, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(47, 182, 168, 0);
+  }
+}
+
+@keyframes blink {
+  0%, 45% {
+    opacity: 1;
+  }
+  50%, 100% {
+    opacity: 0;
+  }
+}
+
+/* ---------- Bottom infra graphic ---------- */
+/* Abstract node-graph rendered as SVG, masked so its top edge
+   dissolves into the white page background instead of sitting
+   on top of it like a pasted-in image. */
+
+.infra-graphic {
+  position: relative;
+  width: 100%;
+  height: min(38vw, 340px);
+  min-height: 220px;
+}
+
+.infra-graphic__svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 42%);
+  mask-image: linear-gradient(to bottom, transparent 0%, black 42%);
+}
+
+@media (max-width: 640px) {
+  .hero {
+    padding: 72px 20px 48px;
+    gap: 22px;
+  }
+
+  .deploy-badge {
+    text-align: left;
+  }
+}
