@@ -1,14 +1,14 @@
 # Filipe Simões — personal site
+This is the automated deployment of my static website, using GitHub Actions!
 
-A small single-page site built with React + Vite.
 
 ## Structure
 
 ```
-├── src/            # React source (App.jsx, main.jsx, styles)
-├── public/          # Static assets served as-is (profile photo)
-├── package.json
-└── vite.config.js
+src/            
+public/          
+package.json
+vite.config.js
 ```
 
 ## Develop
@@ -21,9 +21,8 @@ npm run dev
 ## Build
 
 ```bash
-npm run build   # outputs to dist/
-npm run preview # serve the production build locally
+npm run build   
+npm run preview 
 ```
 
-`dist/` is what you deploy — e.g. copy it to your EC2 instance (behind
-nginx or similar) as part of a GitHub Actions workflow.
+`dist/` is what I deploy to the EC2 instance, into Nginx, as part of my GitHub Actions workflow.
