@@ -36,13 +36,13 @@ jobs:
       - name: Upload website
   		run: |
     	  rsync -avz --delete \
-      	  -e "ssh -i ~/.ssh/github_actions-" \
+      	  -e "ssh -i ~/.ssh/id_ed25519" \
       	  dist/ \
       	  ubuntu@${{ secrets.EC2_HOST }}:/home/ubuntu/dist/
 
 	  -name: Install website
 	  	run: |
-	  	  ssh -i ~.ssh/github_actions- ubuntu@{{ secrets.EC2_HOST }} << 'EOF'
+	  	  ssh -i ~.ssh/id_ed25519 ubuntu@{{ secrets.EC2_HOST }} << 'EOF'
 	  	    sudo rm -rf /var/www/html/*
 	  	    sudo cp -r /home/ubuntu/dist/* /var/www/html
 	  	  EOF
