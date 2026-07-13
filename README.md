@@ -1,4 +1,4 @@
-# This is my simple portfolio website
+# This is my simple website
 This is the automated deployment of my static website, using GitHub Actions!
 
 
